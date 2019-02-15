@@ -2,3 +2,20 @@ body {
   padding: 2em;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.ui-table td {
+  position: relative
+}
+
+.ui-cell-text {
+   white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: absolute;
+    left: 6px;
+    top: 0;
+    width: calc(100% - 12px);
+    
+    line-height: 35px;
+    
+}
