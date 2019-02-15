@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {events} from './events'
+
 
 @Component({
   selector: 'app-root',
@@ -6,9 +8,36 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  counter = 0;
+  private events: any
+  private _selectedEvent: any;
+  @ViewChild('eventTable') eventTable: any;
+  
+  constructor() { }
 
-  onClick() {
-    this.counter++;
+  ngOnInit() {
+    this.events = events;
+    this._selectedEvent = events.data[0];
+  }
+
+  onRowSelect(event) {}
+
+  test() {
+    console.log('test passed');
+  }
+
+  get selectedEvent() {
+    return this._selectedEvent;
+  }
+
+  set selectedEvent(value: any) {
+    if (value) {
+      this._selectedEvent = value;
+    } else {
+      this.eventTable.selection = this._selectedEvent;
+    }
+  }
+
+  cancelUnselect(event) {
+    this.eventTable.selection = event.data;
   }
 }
